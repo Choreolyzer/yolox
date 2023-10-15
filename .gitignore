@@ -226,3 +226,10 @@ events.out.tfevents*
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+export
+out.mp4
+out1.mp4
+yolox_m.pth
+yolox_x.pth
+YOLOX_outputs

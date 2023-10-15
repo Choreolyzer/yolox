@@ -8,11 +8,16 @@ import numpy as np
 __all__ = ["vis"]
 
 
-def vis(img, boxes, scores, cls_ids, conf=0.5, class_names=None):
+def vis(img, img_num, motrv2_info, boxes, scores, cls_ids, conf=0.5, class_names=None):
+
+    key_name = f"DanceTrack/test/blackpink/img1/{img_num}.txt"
+    motrv2_info[key_name] = []
+    print(img_num)
 
     for i in range(len(boxes)):
         box = boxes[i]
-        cls_id = int(cls_ids[i])
+        # cls_id = int(cls_ids[i])
+        cls_id = 0
         score = scores[i]
         if score < conf:
             continue
@@ -20,6 +25,11 @@ def vis(img, boxes, scores, cls_ids, conf=0.5, class_names=None):
         y0 = int(box[1])
         x1 = int(box[2])
         y1 = int(box[3])
+
+        # x, y, w, h, c
+        # x0, y0, x1-x0, y1-y0, score
+        box_info = f'{float(box[0]):.2f},{float(box[1]):.2f},{(float(box[2]) - float(box[0])):.2f},{(float(box[3]) - float(box[1])):.2f},{score:.2f}\n'
+        motrv2_info[key_name].append(box_info)
 
         color = (_COLORS[cls_id] * 255).astype(np.uint8).tolist()
         text = '{}:{:.1f}%'.format(class_names[cls_id], score * 100)

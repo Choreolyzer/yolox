@@ -1,0 +1,3 @@
+python tools/demo.py video -n yolox-m -c yolox_m.pth --path out.mp4 --conf 0.75 --nms 0.45 --tsize 640 --save_result --device gpu
+
+export PYTHONPATH="{PYTHONPATH}:/home/rayb/Documents/yolox/" && python tools/demo.py video -n yolox-x -c yolox_x.pth --path out.mp4 --conf 0.75 --nms 0.45 --tsize 640 --save_result --device gpu
